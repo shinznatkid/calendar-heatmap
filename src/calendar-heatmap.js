@@ -1,11 +1,11 @@
 
 function calendarHeatmap() {
   // defaults
-  var width = 750;
-  var height = 110;
+  var width = 918;
+  var height = 167;
   var legendWidth = 150;
   var selector = 'body';
-  var SQUARE_LENGTH = 11;
+  var SQUARE_LENGTH = 15;
   var SQUARE_PADDING = 2;
   var MONTH_LABEL_PADDING = 6;
   var now = moment().endOf('day').toDate();
@@ -14,7 +14,7 @@ function calendarHeatmap() {
   var counterMap= {};
   var data = [];
   var max = null;
-  var colorRange = ['#D8E6E7', '#218380'];
+  var colorRange = ['#EEF0F9', 'rgb(60, 112, 212)'];
   var tooltipEnabled = true;
   var tooltipUnit = 'contribution';
   var legendEnabled = true;
@@ -163,7 +163,7 @@ function calendarHeatmap() {
             .append('div')
             .attr('class', 'day-cell-tooltip')
             .html(tooltipHTMLForDate(d))
-            .style('left', function () { return Math.floor(i / 7) * SQUARE_LENGTH + 'px'; })
+            .style('left', function () { return (Math.floor(i / 7) * (SQUARE_LENGTH + SQUARE_PADDING) - 30) + 'px'; })
             .style('top', function () {
               return formatWeekday(d.getDay()) * (SQUARE_LENGTH + SQUARE_PADDING) + MONTH_LABEL_PADDING * 2 + 'px';
             });
