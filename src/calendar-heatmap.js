@@ -115,9 +115,13 @@ function calendarHeatmap() {
     }
 
     // color range
-    var color = ((d3.scale && d3.scale.linear) || d3.scaleLinear)()
+    var colorWithoutMax = ((d3.scale && d3.scale.linear) || d3.scaleLinear)()
       .range(chart.colorRange())
       .domain([0, max]);
+    var color = function (count) {
+      count = (count > max)?max:count
+      return colorWithoutMax(count)
+    }
 
     var tooltip;
     var dayRects;
