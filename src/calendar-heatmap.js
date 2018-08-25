@@ -14,7 +14,8 @@ function calendarHeatmap() {
   var counterMap= {};
   var data = [];
   var max = null;
-  var colorRange = ['#EEF0F9', 'rgb(60, 112, 212)'];
+  var colorZero = 'rgb(237, 237, 237)';
+  var colorRange = ['rgb(172, 213, 242)', 'rgb(60, 112, 212)'];
   var tooltipEnabled = true;
   var tooltipUnit = 'contribution';
   var legendEnabled = true;
@@ -119,6 +120,7 @@ function calendarHeatmap() {
       .range(chart.colorRange())
       .domain([0, max]);
     var color = function (count) {
+      if (count == 0) return colorZero
       count = (count > max)?max:count
       return colorWithoutMax(count)
     }
